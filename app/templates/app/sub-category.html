@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}{{sub_category.name}} Category{% endblock title %}
+
+
+
+{% block main-content %}
+<!-- 1st Product Slider -->
+<div class="m-3">
+ <h2 class="text-center">{{sub_category.name}} Products</h2>
+ <!-- Slider 1 -->
+ <div class="owl-carousel" id="slider1">
+  {% for b in bottomwears %}
+    <a href="{% url 'product-detail' b.id %}" class="btn"><div class="item"><img src="{{b.product_image.url}}" alt="" height="300px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 1st Product Slider -->
+
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+ <h2>Recommonded Products</h2>
+ <!-- Slider 2 -->
+ <div class="owl-carousel" id="slider2">
+  {% for tp in recommoneded_products %}
+    <a href="{% url 'product-detail' tp.id %}" class="btn"><div class="item"><img src="{{tp.product_image.url}}" alt="" height="300"><span class="fw-bold">{{tp.title}}</span><br><span class="fs-5">Rs. {{tp.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 2nd Product Slider -->
+
+{% endblock %}
